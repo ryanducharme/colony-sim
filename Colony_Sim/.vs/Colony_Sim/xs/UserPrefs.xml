@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{0BAA1FA8-5153-4571-B71F-DFC11DD8E739}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Colony_Sim/Colony_Sim.csproj">
+    <Files>
+      <File FileName="Colony_Sim/Game1.cs" Line="21" Column="35" />
+      <File FileName="Colony_Sim/UserInterface.cs" />
+      <File FileName="Colony_Sim/Colony_Sim.csproj" Line="14" Column="31" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Colony_Sim" expanded="True">
+            <Node name="Colony_Sim" expanded="True" selected="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Content" expanded="True">
+                <Node name="obj" expanded="True">
+                  <Node name="DesktopGL" expanded="True">
+                    <Node name="Content" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Colony__Sim PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

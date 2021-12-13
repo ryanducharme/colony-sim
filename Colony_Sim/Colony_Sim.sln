@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colony_Sim", "Colony_Sim\Colony_Sim.csproj", "{0BAA1FA8-5153-4571-B71F-DFC11DD8E739}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BAA1FA8-5153-4571-B71F-DFC11DD8E739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BAA1FA8-5153-4571-B71F-DFC11DD8E739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BAA1FA8-5153-4571-B71F-DFC11DD8E739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BAA1FA8-5153-4571-B71F-DFC11DD8E739}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D952CC8-0E74-4954-B46C-D7539B65708E}
+	EndGlobalSection
+EndGlobal
