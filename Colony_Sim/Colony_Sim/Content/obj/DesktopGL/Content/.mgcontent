@@ -4,8 +4,8 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/rducharme/Desktop/Colony Sim/Colony_Sim-20211208T203037Z-001/Colony_Sim/Colony_Sim/Content/Fonts/DefaultFont.spritefont</File>
-    <File>C:/Users/rducharme/Desktop/Colony Sim/Colony_Sim-20211208T203037Z-001/Colony_Sim/Colony_Sim/Content/Textures/pink_brick.png</File>
+    <File>g:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/Fonts/DefaultFont.spritefont</File>
+    <File>g:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/Textures/pink_brick.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
