@@ -26,3 +26,31 @@ C:\Users\rducharme\Desktop\Colony Sim\Colony_Sim-20211208T203037Z-001\Colony_Sim
 C:\Users\rducharme\Desktop\Colony Sim\Colony_Sim-20211208T203037Z-001\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.genruntimeconfig.cache
 C:\Users\rducharme\Desktop\Colony Sim\Colony_Sim-20211208T203037Z-001\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Content\Textures\pink_brick.xnb
 C:\Users\rducharme\Desktop\Colony Sim\Colony_Sim-20211208T203037Z-001\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Content\Fonts\DefaultFont.xnb
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Content\Fonts\DefaultFont.xnb
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Content\Textures\pink_brick.xnb
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Colony_Sim.exe
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Colony_Sim.deps.json
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Colony_Sim.runtimeconfig.json
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Colony_Sim.runtimeconfig.dev.json
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Colony_Sim.dll
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\ref\Colony_Sim.dll
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Colony_Sim.pdb
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\MonoGame.Framework.dll
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\runtimes\linux-x64\native\libopenal.so.1
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\runtimes\osx\native\libSDL2-2.0.0.dylib
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\runtimes\osx\native\libopenal.1.dylib
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\runtimes\win-x64\native\SDL2.dll
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\runtimes\win-x64\native\soft_oal.dll
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\runtimes\win-x86\native\SDL2.dll
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\runtimes\win-x86\native\soft_oal.dll
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.csprojAssemblyReference.cache
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.GeneratedMSBuildEditorConfig.editorconfig
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.AssemblyInfoInputs.cache
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.AssemblyInfo.cs
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.csproj.CoreCompileInputs.cache
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.csproj.CopyComplete
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.dll
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\ref\Colony_Sim.dll
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.pdb
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.genruntimeconfig.cache

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lC0wabuEiuCbDCH723AbEkkqlE2JoUHj0i6PkGGJv13vsZC+j+IWJujy4i35hGJ9Sh8jiWX8IISu9y8Uunix1w==",
+  "dgSpecHash": "Il++2yp4NKHxDOBd1RR13F8NawhZHy6KosvKZmu+WI4S6tZznBTVnT35TTiDBYLc0PdBDngGLyoZJ48/+NxHaA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rducharme\\Desktop\\Colony Sim\\Colony_Sim-20211208T203037Z-001\\Colony_Sim\\Colony_Sim\\Colony_Sim.csproj",
+  "projectFilePath": "G:\\colony-sim\\colony-sim\\Colony_Sim\\Colony_Sim\\Colony_Sim.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rducharme\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
     "C:\\Users\\rducharme\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"

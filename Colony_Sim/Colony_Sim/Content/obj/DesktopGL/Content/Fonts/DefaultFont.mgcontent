@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>g:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/Fonts/DefaultFont.spritefont</SourceFile>
+  <SourceFile>G:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/Fonts/DefaultFont.spritefont</SourceFile>
   <SourceTime>2021-12-08T21:20:46.3438484-05:00</SourceTime>
-  <DestFile>g:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/bin/DesktopGL/Content/Fonts/DefaultFont.xnb</DestFile>
-  <DestTime>2021-12-13T15:35:10.6840721-05:00</DestTime>
+  <DestFile>G:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/bin/DesktopGL/Content/Fonts/DefaultFont.xnb</DestFile>
+  <DestTime>2021-12-13T15:46:51.3980195-05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
