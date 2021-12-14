@@ -19,6 +19,7 @@ namespace Colony_Sim
         string debugMsg = "";
         Camera2d camera;
         InputManager inputManager;
+        MouseInputManager mgr;
         Label label;
         Container container;
         public Game1()
@@ -26,7 +27,6 @@ namespace Colony_Sim
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            
         }
 
         protected override void Initialize()
@@ -52,15 +52,15 @@ namespace Colony_Sim
 
             //fix this to not need to add in level and container
             inputManager = new InputManager(level, container);
+            mgr = new MouseInputManager();
             //container.AddContent(button);
             level.GenerateLevel();
-            
         }
 
         protected override void Update(GameTime gameTime)
         {
-            inputManager.Update(gameTime, _spriteBatch);
- 
+            mgr.Update();
+            inputManager.Update(_spriteBatch);
             base.Update(gameTime);
         }
 
@@ -72,22 +72,23 @@ namespace Colony_Sim
             //button.Draw(_spriteBatch);
             _spriteBatch.Begin();
 
-            _spriteBatch.DrawString(font, inputManager.GetMousePosition().ToString(),
+            _spriteBatch.DrawString(font, mgr.GetMousePosition().ToString(),
                 new Vector2(_graphics.PreferredBackBufferWidth - 150, 10), Color.Black);
 
             if (mouseOverButton)
             {
                 _spriteBatch.DrawString(font, "Over button", new Vector2(_graphics.PreferredBackBufferWidth - 150, 30), Color.Black);
-                if (inputManager.mouseState.LeftButton == ButtonState.Pressed)
+                if (mgr.GetCurrentMouseState().LeftButton == ButtonState.Pressed)
                 {
                     _spriteBatch.DrawString(font, debugMsg, new Vector2(_graphics.PreferredBackBufferWidth - 150, 70), Color.Black);
                 }
             }
             _spriteBatch.DrawString(font, debugMsg, new Vector2(_graphics.PreferredBackBufferWidth - 150, 70), Color.Black);
             _spriteBatch.End();
-            label.Position = new Vector2(inputManager.GetMousePosition().X + 15, inputManager.GetMousePosition().Y + 15);
-            label.Text = "Tile Data:\n" + inputManager.GetTileData() + "\n" + inputManager.GetLevelPosition().ToString();
-            button.Position = new Vector2(inputManager.GetMousePosition().X + 15, inputManager.GetMousePosition().Y + 90);
+            label.Position = new Vector2(mgr.GetMousePosition().X + 15, mgr.GetMousePosition().Y + 15);
+            label.Text = "Tile Data:\n" + inputManager.GetTileData() + "\n" + inputManager.levelScreenToWorldPosition.ToString();
+            //Debug.WriteLine(inputManager.levelScreenToWorldPosition.ToString());
+            button.Position = new Vector2(mgr.GetMousePosition().X + 15, mgr.GetMousePosition().Y + 90);
             //label.Draw(_spriteBatch);
             container.Draw(_spriteBatch);   
             base.Draw(gameTime);
