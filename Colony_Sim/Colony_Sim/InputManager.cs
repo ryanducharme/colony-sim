@@ -12,7 +12,7 @@ namespace Colony_Sim
 {
     class InputManager
     {
-        MouseInputManager mouseInputMgr;
+        //MouseInputManager mouseInputMgr;
         KeyboardState keyboardState { get; set; }        
         KeyboardState lastKeyboardState;
         //bool mouseOverButton;        
@@ -25,8 +25,8 @@ namespace Colony_Sim
         {
             _level = level;
             uiContainer = container;
-            Debug.WriteLine("InputeManager created");
-            mouseInputMgr = new MouseInputManager();
+            
+            //mouseInputMgr = new MouseInputManager();
         }
         public string GetTileData()
         {
@@ -57,11 +57,11 @@ namespace Colony_Sim
             //    uiContainer.Visible = false;
             lastKeyboardState = keyboardState;
             keyboardState = Keyboard.GetState();
-            levelScreenToWorldPosition = _level.ScreenPointToLevelIndex((int)mouseInputMgr.GetMousePosition().X, (int)mouseInputMgr.GetMousePosition().Y);
+            levelScreenToWorldPosition = _level.ScreenPointToLevelIndex((int)MouseInputManager.GetMousePosition().X, (int)MouseInputManager.GetMousePosition().Y);
             
             if (_level.IsWithinLevelBounds(levelScreenToWorldPosition))
             {     
-                if (mouseInputMgr.MousePressed())
+                if (MouseInputManager.MousePressed())
                 {
                     _level.LevelData[(int)levelScreenToWorldPosition.X, (int)levelScreenToWorldPosition.Y].Selected = true;
                     Texture2D tempTexture = new Texture2D(spriteBatch.GraphicsDevice, 24, 24);

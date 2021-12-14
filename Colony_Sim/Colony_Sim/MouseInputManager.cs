@@ -9,41 +9,40 @@ using System.Threading.Tasks;
 
 namespace Colony_Sim
 {
-    class MouseInputManager
+    static class MouseInputManager
     {
-        private MouseState CurrentMouseState;
-        private MouseState LastMouseState;
-        private Vector2 MousePosition;
+        private static MouseState CurrentMouseState;
+        private static MouseState LastMouseState;
+        private static Vector2 MousePosition;
 
-        public void Update()
+        public static void Update()
         {
             GetCurrentMouseState();
-            
         }
 
-        public MouseInputManager()
-        {
+        //public static MouseInputManager()
+        //{
             
-        }
-        public Vector2 GetMousePosition()
+        //}
+        public static Vector2 GetMousePosition()
         {
             MousePosition.X = CurrentMouseState.X;
             MousePosition.Y = CurrentMouseState.Y;
             return MousePosition;
         }
 
-        public MouseState GetCurrentMouseState()
+        public static MouseState GetCurrentMouseState()
         {
             LastMouseState = CurrentMouseState;
             CurrentMouseState = Mouse.GetState();
             return CurrentMouseState;
         }
 
-        public MouseState GetLastMouseState()
+        public static MouseState GetLastMouseState()
         {
             return LastMouseState;
         }
-        public bool MousePressed()
+        public static bool MousePressed()
         {
             CurrentMouseState = Mouse.GetState();
             if (CurrentMouseState.LeftButton == ButtonState.Pressed)

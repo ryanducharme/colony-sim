@@ -10,9 +10,7 @@ namespace Colony_Sim
     {
         GraphicsDevice graphics;
         public Tile[,] LevelData { get; }
-        public int LevelSize { get; set; } = 48;
-
-        
+        public int LevelSize { get; set; } = 128;
         public Level(GraphicsDevice g)
         {
             graphics = g;
@@ -29,18 +27,13 @@ namespace Colony_Sim
         public bool IsWithinLevelBounds(Vector2 testPosition)
         {
             if (testPosition.X >= 0 && testPosition.X < LevelData.GetLength(0) && testPosition.Y >= 0 && testPosition.Y < LevelData.GetLength(1))
-            {
-                Debug.WriteLine("true" + testPosition);
-                
+            {   
                 return true;
             }
             else
             {
-                Debug.WriteLine("false" + testPosition);
                 return false;
             }
-                
-            
         }
 
         public void GenerateLevel()
@@ -88,10 +81,8 @@ namespace Colony_Sim
             int y = 0;
             int row = 0;
             int col = 0;
-            
 
-
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
             for (row = 0; row < LevelSize; row++)
             {
                 for (col = 0; col < LevelSize; col++)
@@ -103,9 +94,8 @@ namespace Colony_Sim
                 col = 0;
                 x = 0;
                 y += LevelData[row, col].Size;
-                
             }
-            spriteBatch.End();
+            //spriteBatch.End();
         }
     }
 }

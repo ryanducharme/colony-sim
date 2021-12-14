@@ -7,7 +7,6 @@ namespace Colony_Sim
 {
     public class Tile
     {
-
         public Texture2D Texture { get; set; }
         public bool Selected { get; set; }
         public string Description { get; set; }
@@ -39,8 +38,7 @@ namespace Colony_Sim
         }
 
         private Texture2D GenerateTexture(GraphicsDevice g, Microsoft.Xna.Framework.Color color)
-        {
-            
+        {    
             Microsoft.Xna.Framework.Color[] data = new Microsoft.Xna.Framework.Color[Size * Size];
             Texture2D texture = new Texture2D(g, Size, Size);
             //Debug.WriteLine(texture.Format.ToString());
@@ -60,9 +58,5 @@ namespace Colony_Sim
             return texture;
             //Texture.SetData(data);
         }
-
-        
-
-
     }
 }

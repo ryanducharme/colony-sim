@@ -19,9 +19,18 @@ namespace Colony_Sim
         string debugMsg = "";
         Camera2d camera;
         InputManager inputManager;
-        MouseInputManager mgr;
         Label label;
         Container container;
+
+        Vector3 left = new Vector3(-1, 0, 0);
+        Vector3 mapPosition = new Vector3(0, 0, 0);
+        int cameraSpeed = 5;
+        Matrix testMatrix;
+       // Matrix result = Matrix.CreateRotationX(MathHelper.ToRadians(45)) *
+                                 //Matrix.CreateTranslation(new Vector3(1, 0, 0));
+        Matrix currentTranslationMatrix;
+        Matrix previousTranslationMatrix;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -52,46 +61,75 @@ namespace Colony_Sim
 
             //fix this to not need to add in level and container
             inputManager = new InputManager(level, container);
-            mgr = new MouseInputManager();
+            
             //container.AddContent(button);
             level.GenerateLevel();
         }
 
         protected override void Update(GameTime gameTime)
         {
-            mgr.Update();
+
+            MouseInputManager.Update();
             inputManager.Update(_spriteBatch);
+            //cameraSpeed = 1;
+            KeyboardState key = Keyboard.GetState();
+            //move cam left
+
+           
+            if (key.IsKeyDown(Keys.Left))
+            {
+                currentTranslationMatrix = Matrix.CreateTranslation(mapPosition);
+                mapPosition -= new Vector3(cameraSpeed,0,0);
+            }
+            //move cam right
+            if (key.IsKeyDown(Keys.Right))
+            {
+                currentTranslationMatrix = Matrix.CreateTranslation(mapPosition);
+                mapPosition += new Vector3(cameraSpeed, 0, 0);
+            }
+            //move cam up
+            if (key.IsKeyDown(Keys.Up))
+            {
+                currentTranslationMatrix = Matrix.CreateTranslation(mapPosition);
+                mapPosition -= new Vector3(0, cameraSpeed, 0);
+            }
+            //move cam down
+            if (key.IsKeyDown(Keys.Down))
+            {
+                currentTranslationMatrix = Matrix.CreateTranslation(mapPosition);
+                mapPosition += new Vector3(0, cameraSpeed, 0);
+            }
+
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
+            
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            _spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, currentTranslationMatrix);
             level.Draw(_spriteBatch);
             //button.Draw(_spriteBatch);
-            _spriteBatch.Begin();
+            //_spriteBatch.Begin();
 
-            _spriteBatch.DrawString(font, mgr.GetMousePosition().ToString(),
-                new Vector2(_graphics.PreferredBackBufferWidth - 150, 10), Color.Black);
+            //_spriteBatch.DrawString(font, MouseInputManager.GetMousePosition().ToString(),
+            //    new Vector2(_graphics.PreferredBackBufferWidth - 150, 10), Color.Black);
 
-            if (mouseOverButton)
-            {
-                _spriteBatch.DrawString(font, "Over button", new Vector2(_graphics.PreferredBackBufferWidth - 150, 30), Color.Black);
-                if (mgr.GetCurrentMouseState().LeftButton == ButtonState.Pressed)
-                {
-                    _spriteBatch.DrawString(font, debugMsg, new Vector2(_graphics.PreferredBackBufferWidth - 150, 70), Color.Black);
-                }
-            }
-            _spriteBatch.DrawString(font, debugMsg, new Vector2(_graphics.PreferredBackBufferWidth - 150, 70), Color.Black);
-            _spriteBatch.End();
-            label.Position = new Vector2(mgr.GetMousePosition().X + 15, mgr.GetMousePosition().Y + 15);
+
+            //_spriteBatch.DrawString(font, debugMsg, new Vector2(_graphics.PreferredBackBufferWidth - 150, 70), Color.Black);
+            //_spriteBatch.End();
+            
+            label.Position = new Vector2(MouseInputManager.GetMousePosition().X + 15, MouseInputManager.GetMousePosition().Y + 15);
             label.Text = "Tile Data:\n" + inputManager.GetTileData() + "\n" + inputManager.levelScreenToWorldPosition.ToString();
             //Debug.WriteLine(inputManager.levelScreenToWorldPosition.ToString());
-            button.Position = new Vector2(mgr.GetMousePosition().X + 15, mgr.GetMousePosition().Y + 90);
+            button.Position = new Vector2(MouseInputManager.GetMousePosition().X + 15, MouseInputManager.GetMousePosition().Y + 90);
+            _spriteBatch.End();
             //label.Draw(_spriteBatch);
             container.Draw(_spriteBatch);   
+
             base.Draw(gameTime);
+            var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
+            Debug.WriteLine(framerate);
         }
     }
 }
