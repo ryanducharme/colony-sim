@@ -3,25 +3,24 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 
-public class Camera2d
+public static class Camera2d
 {
-    protected float _zoom; // Camera Zoom
-    public Matrix Transform { get; set; } // Matrix Transform
-    public Vector3 Position { get; set; } // Camera Position
-    public int Speed { get; set; } = 5;
+    public static Matrix Transform { get; set; } // Matrix Transform
+    public static Vector3 Position { get; set; } // Camera Position
+    public static int Speed { get; set; } = 5;
     //protected float _rotation; // Camera Rotation
-    private GraphicsDeviceManager _graphics;
-    private Matrix inverse;
-    public Camera2d(GraphicsDeviceManager g)
-    {
-        _graphics = g;
-    }
-    public Vector2 ScreenToWorldSpace(in Vector2 point)
+    public static GraphicsDeviceManager GraphicsDeviceManager { get; set; }
+    
+    //public static Camera2d(GraphicsDeviceManager g)
+    //{
+    //    _graphics = g;
+    //}
+    public static Vector2 ScreenToWorldSpace(in Vector2 point)
     {
         Matrix invertedMatrix = Matrix.Invert(Transform);
         return Vector2.Transform(point, invertedMatrix);
     }
-    public void Update()
+    public static void Update()
     {
         KeyboardState key = Keyboard.GetState();
         //move cam left
@@ -32,7 +31,7 @@ public class Camera2d
             Transform = Matrix.CreateTranslation(Position);
         }
 
-        if (Colony_Sim.MouseInputManager.GetMousePosition().X >= _graphics.PreferredBackBufferWidth)
+        if (Colony_Sim.MouseInputManager.GetMousePosition().X >= GraphicsDeviceManager.PreferredBackBufferWidth)
         {
             Position += new Vector3(Speed, 0, 0);
             Transform = Matrix.CreateTranslation(Position);
@@ -43,7 +42,7 @@ public class Camera2d
             Transform = Matrix.CreateTranslation(Position);
         }
 
-        if (Colony_Sim.MouseInputManager.GetMousePosition().Y >= _graphics.PreferredBackBufferHeight)
+        if (Colony_Sim.MouseInputManager.GetMousePosition().Y >= GraphicsDeviceManager.PreferredBackBufferHeight)
         {
             Position += new Vector3(0, Speed, 0);
             Transform = Matrix.CreateTranslation(Position);

@@ -19,7 +19,7 @@ namespace Colony_Sim
         private Level _level;
         private Container uiContainer;
         Vector2 lastTileClicked;
-        public Vector2 levelScreenToWorldPosition;
+        public Vector2 ScreenToWorldLevelIndex;
 
         public InputManager(Level level, Container container)
         {
@@ -31,9 +31,9 @@ namespace Colony_Sim
         public string GetTileData()
         {
             string tileData;
-            if (_level.IsWithinLevelBounds(levelScreenToWorldPosition))
+            if (_level.IsWithinLevelBounds(ScreenToWorldLevelIndex))
             {
-                tileData = _level.LevelData[(int)levelScreenToWorldPosition.X, (int)levelScreenToWorldPosition.Y].Type.ToString();
+                tileData = _level.LevelData[(int)ScreenToWorldLevelIndex.X, (int)ScreenToWorldLevelIndex.Y].Type.ToString();
                 return tileData;
             }
             else
@@ -57,13 +57,16 @@ namespace Colony_Sim
             //    uiContainer.Visible = false;
             lastKeyboardState = keyboardState;
             keyboardState = Keyboard.GetState();
-            levelScreenToWorldPosition = _level.ScreenPointToLevelIndex((int)MouseInputManager.GetMousePosition().X, (int)MouseInputManager.GetMousePosition().Y);
             
-            if (_level.IsWithinLevelBounds(levelScreenToWorldPosition))
-            {     
+            //Get the mouse coordinates and translate them to the offset of the world. Then see if that vector is within the bounds of the level (chopped up by the tile size)
+            ScreenToWorldLevelIndex = 
+                _level.GetLevelIndex((int)Camera2d.ScreenToWorldSpace(MouseInputManager.GetMousePosition()).X, (int)Camera2d.ScreenToWorldSpace(MouseInputManager.GetMousePosition()).Y);
+            if (_level.IsWithinLevelBounds(ScreenToWorldLevelIndex))
+            {
+                Debug.WriteLine("Worked");
                 if (MouseInputManager.MousePressed())
                 {
-                    _level.LevelData[(int)levelScreenToWorldPosition.X, (int)levelScreenToWorldPosition.Y].Selected = true;
+                    _level.LevelData[(int)ScreenToWorldLevelIndex.X, (int)ScreenToWorldLevelIndex.Y].Selected = true;
                     Texture2D tempTexture = new Texture2D(spriteBatch.GraphicsDevice, 24, 24);
                     Microsoft.Xna.Framework.Color[] resetTextureData = new Microsoft.Xna.Framework.Color[24 * 24];
                     Microsoft.Xna.Framework.Color[] data = new Microsoft.Xna.Framework.Color[24 * 24];
@@ -71,7 +74,7 @@ namespace Colony_Sim
                     //set initial initial color
                     for (int i = 0; i < data.Length; ++i) resetTextureData[i] = _level.LevelData[(int)lastTileClicked.X, (int)lastTileClicked.Y].Color;
                     _level.LevelData[(int)lastTileClicked.X, (int)lastTileClicked.Y].Texture.SetData(resetTextureData);
-                    for (int i = 0; i < data.Length; ++i) data[i] = _level.LevelData[(int)levelScreenToWorldPosition.X, (int)levelScreenToWorldPosition.Y].Color;
+                    for (int i = 0; i < data.Length; ++i) data[i] = _level.LevelData[(int)ScreenToWorldLevelIndex.X, (int)ScreenToWorldLevelIndex.Y].Color;
 
                     //get texture data of current tile then add white borders
                     foreach (int i in Enumerable.Range(0, 24))
@@ -86,8 +89,8 @@ namespace Colony_Sim
                         data[data.Length - 1 - i] = Color.LimeGreen;
                     }
                     tempTexture.SetData(data);
-                    _level.LevelData[(int)levelScreenToWorldPosition.X, (int)levelScreenToWorldPosition.Y].Texture = tempTexture;
-                    lastTileClicked = new Vector2((int)levelScreenToWorldPosition.X, (int)levelScreenToWorldPosition.Y);
+                    _level.LevelData[(int)ScreenToWorldLevelIndex.X, (int)ScreenToWorldLevelIndex.Y].Texture = tempTexture;
+                    lastTileClicked = new Vector2((int)ScreenToWorldLevelIndex.X, (int)ScreenToWorldLevelIndex.Y);
                 }
             }
         }

@@ -17,7 +17,7 @@ namespace Colony_Sim
             LevelData = new Tile[LevelSize, LevelSize];
         }
 
-        public Vector2 ScreenPointToLevelIndex(int screenX, int screenY)
+        public Vector2 GetLevelIndex(int screenX, int screenY)
         {
             int xIndex = screenX / 24;
             int yIndex = screenY / 24;
@@ -40,7 +40,7 @@ namespace Colony_Sim
         {
             Random random = new Random();
 
-            int maxWater = 0;
+            int maxWater = 10;
             int maxRocks = 5;
             int currentWaterTileCount = 0;
             
