@@ -40,7 +40,7 @@ namespace Colony_Sim
         {
             Random random = new Random();
 
-            int maxWater = 10;
+            int maxWater = 32 * 32;
             int maxRocks = 5;
             int currentWaterTileCount = 0;
             

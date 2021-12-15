@@ -10,28 +10,15 @@ namespace Colony_Sim
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private SpriteBatch _gameWorldSpriteBatch;
         private SpriteBatch _UISpriteBatch;
 
         Level level;
-        Button button;
         SpriteFont font;
-        bool mouseOverButton;
-        string debugMsg = "";
-        //Camera2d camera;
         Texture2D man;
         InputManager inputManager;
         Label label;
         Container container;
-
-        //Vector3 left = new Vector3(-1, 0, 0);
-        //Vector3 mapPosition = new Vector3(0, 0, 0);
-        //int cameraSpeed = 5;
-        //Matrix testMatrix;
-       // Matrix result = Matrix.CreateRotationX(MathHelper.ToRadians(45)) *
-                                 //Matrix.CreateTranslation(new Vector3(1, 0, 0));
-        //Matrix currentTranslationMatrix;
-        //Matrix previousTranslationMatrix;
 
         public Game1()
         {
@@ -51,14 +38,12 @@ namespace Colony_Sim
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _gameWorldSpriteBatch = new SpriteBatch(GraphicsDevice);
             _UISpriteBatch = new SpriteBatch(GraphicsDevice);
             Texture2D buttonTexture = Content.Load<Texture2D>("Textures\\pink_brick");
             man = Content.Load<Texture2D>("Textures\\Man");
             font = Content.Load<SpriteFont>("Fonts\\DefaultFont");
-            button = new Button(buttonTexture, new Vector2(20, 20));
             level = new Level(GraphicsDevice);
-            
             label = new Label(font, new Vector2(100, 100), "Hello world!", Color.White);
             container = new Container(new Vector2(20, 20), buttonTexture);
             container.AddContent(label);
@@ -75,43 +60,32 @@ namespace Colony_Sim
         {
 
             MouseInputManager.Update();
-            inputManager.Update(_spriteBatch);
-            //cameraSpeed = 1;
+            inputManager.Update(_gameWorldSpriteBatch);
             Camera2d.Update();
-            //camera.Update();
-            //Debug.Write(Camera2d.ScreenToWorldSpace(MouseInputManager.GetMousePosition()));
-            //Debug.WriteLine(MouseInputManager.GetMousePosition());
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
-        {
-            
+        {            
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            _spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Camera2d.Transform);
-            level.Draw(_spriteBatch);
-            //button.Draw(_spriteBatch);
-            //_spriteBatch.Begin();
 
-            //_spriteBatch.DrawString(font, MouseInputManager.GetMousePosition().ToString(),
-            //    new Vector2(_graphics.PreferredBackBufferWidth - 150, 10), Color.Black);
+            _gameWorldSpriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Camera2d.Transform);
+            level.Draw(_gameWorldSpriteBatch);
+            _gameWorldSpriteBatch.Draw(man, new Vector2(15,15), Color.White);
+            _gameWorldSpriteBatch.End();
 
-
-            //_spriteBatch.DrawString(font, debugMsg, new Vector2(_graphics.PreferredBackBufferWidth - 150, 70), Color.Black);
-            //_spriteBatch.End();
             
-            _spriteBatch.Draw(man, new Vector2(15,15), Color.White);
-            _spriteBatch.End();
-            //label.Draw(_spriteBatch);
-            container.Draw(_spriteBatch);
+            
 
             _UISpriteBatch.Begin();
             var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
             _UISpriteBatch.DrawString(font, "FPS: " + framerate, new Vector2(0, 0), Color.Black);
-            
-            label.Position = new Vector2(0,20);
             label.Text = "Tile Data:\n" + inputManager.GetTileData() + "\n" + inputManager.ScreenToWorldLevelIndex.ToString();
+            label.Position = new Vector2(0,20);
             _UISpriteBatch.End();
+
+            container.Draw(_gameWorldSpriteBatch);
+
             base.Draw(gameTime);
             
             
