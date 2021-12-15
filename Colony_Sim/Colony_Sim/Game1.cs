@@ -11,14 +11,15 @@ namespace Colony_Sim
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        
+        private SpriteBatch _UISpriteBatch;
+
         Level level;
         Button button;
         SpriteFont font;
         bool mouseOverButton;
         string debugMsg = "";
         //Camera2d camera;
-        
+        Texture2D man;
         InputManager inputManager;
         Label label;
         Container container;
@@ -51,8 +52,9 @@ namespace Colony_Sim
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+            _UISpriteBatch = new SpriteBatch(GraphicsDevice);
             Texture2D buttonTexture = Content.Load<Texture2D>("Textures\\pink_brick");
+            man = Content.Load<Texture2D>("Textures\\Man");
             font = Content.Load<SpriteFont>("Fonts\\DefaultFont");
             button = new Button(buttonTexture, new Vector2(20, 20));
             level = new Level(GraphicsDevice);
@@ -98,17 +100,21 @@ namespace Colony_Sim
             //_spriteBatch.DrawString(font, debugMsg, new Vector2(_graphics.PreferredBackBufferWidth - 150, 70), Color.Black);
             //_spriteBatch.End();
             
-            label.Position = new Vector2(MouseInputManager.GetMousePosition().X + 15, MouseInputManager.GetMousePosition().Y + 15);
-            label.Text = "Tile Data:\n" + inputManager.GetTileData() + "\n" + inputManager.ScreenToWorldLevelIndex.ToString();
-            //Debug.WriteLine(inputManager.levelScreenToWorldPosition.ToString());
-            button.Position = new Vector2(MouseInputManager.GetMousePosition().X + 15, MouseInputManager.GetMousePosition().Y + 90);
+            _spriteBatch.Draw(man, new Vector2(15,15), Color.White);
             _spriteBatch.End();
             //label.Draw(_spriteBatch);
-            container.Draw(_spriteBatch);   
+            container.Draw(_spriteBatch);
 
+            _UISpriteBatch.Begin();
+            var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
+            _UISpriteBatch.DrawString(font, "FPS: " + framerate, new Vector2(0, 0), Color.Black);
+            
+            label.Position = new Vector2(0,20);
+            label.Text = "Tile Data:\n" + inputManager.GetTileData() + "\n" + inputManager.ScreenToWorldLevelIndex.ToString();
+            _UISpriteBatch.End();
             base.Draw(gameTime);
-            //var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
-            //Debug.WriteLine(framerate);
+            
+            
         }
     }
 }

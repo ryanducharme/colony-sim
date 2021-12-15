@@ -10,7 +10,7 @@ namespace Colony_Sim
         public Texture2D Texture { get; set; }
         public bool Selected { get; set; }
         public string Description { get; set; }
-        public int Size { get; set; } = 24;
+        public int Size { get; set; } = 32;
         public TileType Type { get; set; }
         public Microsoft.Xna.Framework.Color Color { get; set; }
         //Rectangle Bounds { get; set; }

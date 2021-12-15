@@ -39,10 +39,7 @@ namespace Colony_Sim
             else
                 return "not within bounds";
         }
-        //public Vector2 GetLevelPosition()
-        //{
-        //    return new Vector2(levelScreenToWorldPosition.X, levelScreenToWorldPosition.Y);
-        //}
+        
         public void Update(SpriteBatch spriteBatch)
         {
             //Rectangle mouseBoundingBox = new Rectangle((int)mousePosition.X, (int)mousePosition.Y, 1, 1);
@@ -67,9 +64,9 @@ namespace Colony_Sim
                 if (MouseInputManager.MousePressed())
                 {
                     _level.LevelData[(int)ScreenToWorldLevelIndex.X, (int)ScreenToWorldLevelIndex.Y].Selected = true;
-                    Texture2D tempTexture = new Texture2D(spriteBatch.GraphicsDevice, 24, 24);
-                    Microsoft.Xna.Framework.Color[] resetTextureData = new Microsoft.Xna.Framework.Color[24 * 24];
-                    Microsoft.Xna.Framework.Color[] data = new Microsoft.Xna.Framework.Color[24 * 24];
+                    Texture2D tempTexture = new Texture2D(spriteBatch.GraphicsDevice, 32, 32);
+                    Microsoft.Xna.Framework.Color[] resetTextureData = new Microsoft.Xna.Framework.Color[32 * 32];
+                    Microsoft.Xna.Framework.Color[] data = new Microsoft.Xna.Framework.Color[32 * 32];
 
                     //set initial initial color
                     for (int i = 0; i < data.Length; ++i) resetTextureData[i] = _level.LevelData[(int)lastTileClicked.X, (int)lastTileClicked.Y].Color;
@@ -77,14 +74,14 @@ namespace Colony_Sim
                     for (int i = 0; i < data.Length; ++i) data[i] = _level.LevelData[(int)ScreenToWorldLevelIndex.X, (int)ScreenToWorldLevelIndex.Y].Color;
 
                     //get texture data of current tile then add white borders
-                    foreach (int i in Enumerable.Range(0, 24))
+                    foreach (int i in Enumerable.Range(0, 32))
                     {
                         // top edge
                         data[i] = Color.LimeGreen;
                         // left edge
-                        data[i * 24] = Color.LimeGreen;
+                        data[i * 32] = Color.LimeGreen;
                         // right edge
-                        data[(i * 24) + 23] = Color.LimeGreen;
+                        data[(i * 32) + 31] = Color.LimeGreen;
                         // bottom edge
                         data[data.Length - 1 - i] = Color.LimeGreen;
                     }

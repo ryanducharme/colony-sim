@@ -19,8 +19,8 @@ namespace Colony_Sim
 
         public Vector2 GetLevelIndex(int screenX, int screenY)
         {
-            int xIndex = screenX / 24;
-            int yIndex = screenY / 24;
+            int xIndex = screenX / 32;
+            int yIndex = screenY / 32;
             return new Vector2(xIndex, yIndex);
         }
 
