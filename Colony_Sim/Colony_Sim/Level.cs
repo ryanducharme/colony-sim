@@ -10,7 +10,7 @@ namespace Colony_Sim
     {
         GraphicsDevice graphics;
         public Tile[,] LevelData { get; }
-        public int LevelSize { get; set; } = 128;
+        public int LevelSize { get; set; } = 64;
         public Level(GraphicsDevice g)
         {
             graphics = g;

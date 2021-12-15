@@ -22,14 +22,14 @@ namespace Colony_Sim
         Label label;
         Container container;
 
-        Vector3 left = new Vector3(-1, 0, 0);
-        Vector3 mapPosition = new Vector3(0, 0, 0);
-        int cameraSpeed = 5;
-        Matrix testMatrix;
+        //Vector3 left = new Vector3(-1, 0, 0);
+        //Vector3 mapPosition = new Vector3(0, 0, 0);
+        //int cameraSpeed = 5;
+        //Matrix testMatrix;
        // Matrix result = Matrix.CreateRotationX(MathHelper.ToRadians(45)) *
                                  //Matrix.CreateTranslation(new Vector3(1, 0, 0));
-        Matrix currentTranslationMatrix;
-        Matrix previousTranslationMatrix;
+        //Matrix currentTranslationMatrix;
+        //Matrix previousTranslationMatrix;
 
         public Game1()
         {
@@ -40,8 +40,8 @@ namespace Colony_Sim
 
         protected override void Initialize()
         {
-            _graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
-            _graphics.PreferredBackBufferHeight = 1080;   // set this value to the desired height of your window
+            _graphics.PreferredBackBufferWidth = 1280;  // set this value to the desired width of your window
+            _graphics.PreferredBackBufferHeight = 720;   // set this value to the desired height of your window
             _graphics.ApplyChanges();
             base.Initialize();
         }
@@ -64,6 +64,7 @@ namespace Colony_Sim
             
             //container.AddContent(button);
             level.GenerateLevel();
+            camera = new Camera2d(_graphics);
         }
 
         protected override void Update(GameTime gameTime)
@@ -72,34 +73,10 @@ namespace Colony_Sim
             MouseInputManager.Update();
             inputManager.Update(_spriteBatch);
             //cameraSpeed = 1;
-            KeyboardState key = Keyboard.GetState();
-            //move cam left
 
-           
-            if (key.IsKeyDown(Keys.Left))
-            {
-                currentTranslationMatrix = Matrix.CreateTranslation(mapPosition);
-                mapPosition -= new Vector3(cameraSpeed,0,0);
-            }
-            //move cam right
-            if (key.IsKeyDown(Keys.Right))
-            {
-                currentTranslationMatrix = Matrix.CreateTranslation(mapPosition);
-                mapPosition += new Vector3(cameraSpeed, 0, 0);
-            }
-            //move cam up
-            if (key.IsKeyDown(Keys.Up))
-            {
-                currentTranslationMatrix = Matrix.CreateTranslation(mapPosition);
-                mapPosition -= new Vector3(0, cameraSpeed, 0);
-            }
-            //move cam down
-            if (key.IsKeyDown(Keys.Down))
-            {
-                currentTranslationMatrix = Matrix.CreateTranslation(mapPosition);
-                mapPosition += new Vector3(0, cameraSpeed, 0);
-            }
-
+            camera.Update();
+            Debug.WriteLine(camera.ScreenToWorldSpace(MouseInputManager.GetMousePosition()));
+            //Debug.WriteLine(MouseInputManager.GetMousePosition());
             base.Update(gameTime);
         }
 
@@ -107,7 +84,7 @@ namespace Colony_Sim
         {
             
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            _spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, currentTranslationMatrix);
+            _spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, camera.Transform);
             level.Draw(_spriteBatch);
             //button.Draw(_spriteBatch);
             //_spriteBatch.Begin();
@@ -128,8 +105,8 @@ namespace Colony_Sim
             container.Draw(_spriteBatch);   
 
             base.Draw(gameTime);
-            var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
-            Debug.WriteLine(framerate);
+            //var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
+            //Debug.WriteLine(framerate);
         }
     }
 }
