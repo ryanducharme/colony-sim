@@ -10,17 +10,18 @@ namespace Colony_Sim
     {
         GraphicsDevice graphics;
         public Tile[,] LevelData { get; }
-        public int LevelSize { get; set; } = 64;
+        public int LevelSize { get; set; } = 10;
         public Level(GraphicsDevice g)
         {
             graphics = g;
             LevelData = new Tile[LevelSize, LevelSize];
         }
 
-        public Vector2 GetLevelIndex(int screenX, int screenY)
+        public Vector2 GetLevelIndex(Vector2 Point)
         {
-            int xIndex = screenX / 32;
-            int yIndex = screenY / 32;
+
+            float xIndex = Point.X / 32;
+            float yIndex = Point.Y / 32;
             return new Vector2(xIndex, yIndex);
         }
 
@@ -40,7 +41,7 @@ namespace Colony_Sim
         {
             Random random = new Random();
 
-            int maxWater = 32 * 32;
+            int maxWater = 0;
             int maxRocks = 5;
             int currentWaterTileCount = 0;
             

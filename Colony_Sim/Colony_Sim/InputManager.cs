@@ -56,18 +56,22 @@ namespace Colony_Sim
             keyboardState = Keyboard.GetState();
             
             //Get the mouse coordinates and translate them to the offset of the world. Then see if that vector is within the bounds of the level (chopped up by the tile size)
-            ScreenToWorldLevelIndex = 
-                _level.GetLevelIndex((int)Camera2d.ScreenToWorldSpace(MouseInputManager.GetMousePosition()).X, (int)Camera2d.ScreenToWorldSpace(MouseInputManager.GetMousePosition()).Y);
+            ScreenToWorldLevelIndex = _level.GetLevelIndex(Camera2d.ScreenToWorldSpace(MouseInputManager.GetMousePosition()));
+            Debug.WriteLine(ScreenToWorldLevelIndex);
             if (_level.IsWithinLevelBounds(ScreenToWorldLevelIndex))
             {
-                Debug.WriteLine("Worked");
+                //Debug.WriteLine("Worked");
+
                 if (MouseInputManager.MousePressed())
                 {
+                    
                     _level.LevelData[(int)ScreenToWorldLevelIndex.X, (int)ScreenToWorldLevelIndex.Y].Selected = true;
                     Texture2D tempTexture = new Texture2D(spriteBatch.GraphicsDevice, 32, 32);
                     Microsoft.Xna.Framework.Color[] resetTextureData = new Microsoft.Xna.Framework.Color[32 * 32];
                     Microsoft.Xna.Framework.Color[] data = new Microsoft.Xna.Framework.Color[32 * 32];
 
+
+                    //draw border around tile that is clicked
                     //set initial initial color
                     for (int i = 0; i < data.Length; ++i) resetTextureData[i] = _level.LevelData[(int)lastTileClicked.X, (int)lastTileClicked.Y].Color;
                     _level.LevelData[(int)lastTileClicked.X, (int)lastTileClicked.Y].Texture.SetData(resetTextureData);

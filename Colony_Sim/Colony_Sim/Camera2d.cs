@@ -5,16 +5,17 @@ using System.Diagnostics;
 
 public static class Camera2d
 {
-    public static Matrix Transform { get; set; } // Matrix Transform
+    public static Matrix Transform { get; set; } = Matrix.Identity; // Matrix Transform
     public static Vector3 Position { get; set; } // Camera Position
     public static int Speed { get; set; } = 5;
     public static GraphicsDeviceManager GraphicsDeviceManager { get; set; }
     
-    public static Vector2 ScreenToWorldSpace(in Vector2 point)
+    public static Vector2 ScreenToWorldSpace(Vector2 point)
     {
         Matrix invertedMatrix = Matrix.Invert(Transform);
         return Vector2.Transform(point, invertedMatrix);
     }
+
     public static void Update()
     {
         KeyboardState key = Keyboard.GetState();

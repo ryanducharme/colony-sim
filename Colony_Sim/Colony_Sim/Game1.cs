@@ -74,8 +74,6 @@ namespace Colony_Sim
             _gameWorldSpriteBatch.Draw(man, new Vector2(15,15), Color.White);
             _gameWorldSpriteBatch.End();
 
-            
-            
 
             _UISpriteBatch.Begin();
             var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
