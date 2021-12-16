@@ -6,20 +6,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Colony_Sim
 {
-    public class Map
+    public class Map : IDrawable, IUpdateable
     {
-        GraphicsDevice graphics;
         public Tile[,] MapData { get; }
         public int MapSize { get; set; } = 10;
-        public Map(GraphicsDevice g)
+        public Map()
         {
-            graphics = g;
             MapData = new Tile[MapSize, MapSize];
         }
 
         public Vector2 GetMapIndex(Vector2 Point)
         {
-
             float xIndex = Point.X / 32;
             float yIndex = Point.Y / 32;
             return new Vector2(xIndex, yIndex);
@@ -28,13 +25,9 @@ namespace Colony_Sim
         public bool IsWithinMapBounds(Vector2 testPosition)
         {
             if (testPosition.X >= 0 && testPosition.X < MapData.GetLength(0) && testPosition.Y >= 0 && testPosition.Y < MapData.GetLength(1))
-            {   
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
 
         public void GenerateMap()
@@ -60,7 +53,7 @@ namespace Colony_Sim
                     if (tileType == TileType.Water && currentWaterTileCount < maxWater)
                     {
                         currentWaterTileCount++;
-                        MapData[row, col] = new Tile(graphics, tileType);
+                        MapData[row, col] = new Tile(tileType);
                     }
                     else
                     {
@@ -69,12 +62,16 @@ namespace Colony_Sim
                             randomNumber = random.Next(0, 3);
                         }
                         tileType = (TileType)Enum.ToObject(typeof(TileType), randomNumber);
-                        MapData[row, col] = new Tile(graphics, tileType);
+                        MapData[row, col] = new Tile(tileType);
                     }
                 }
             }
         }
 
+        public void Update(GameTime gameTime)
+        {
+            
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             //Vector position

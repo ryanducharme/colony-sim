@@ -14,49 +14,29 @@ namespace Colony_Sim
         public TileType Type { get; set; }
         public Microsoft.Xna.Framework.Color Color { get; set; }
         //Rectangle Bounds { get; set; }
-        public Tile(GraphicsDevice g, TileType type)
+        public Tile(TileType type)
         {
             if(type == TileType.Grass)
             {
-                Texture = GenerateTexture(g, Microsoft.Xna.Framework.Color.Green);
+                Texture = TextureUtil.GenerateTexture(Microsoft.Xna.Framework.Color.Green, Size, Size);
                 Color = Microsoft.Xna.Framework.Color.Green;
             }
             if (type == TileType.Water)
             {
-                Texture = GenerateTexture(g, Microsoft.Xna.Framework.Color.DeepSkyBlue);
+                Texture = TextureUtil.GenerateTexture(Microsoft.Xna.Framework.Color.DeepSkyBlue, Size, Size);
             }
             if (type == TileType.Soil)
             {
-                Texture = GenerateTexture(g, Microsoft.Xna.Framework.Color.DarkGreen);
+                Texture = TextureUtil.GenerateTexture(Microsoft.Xna.Framework.Color.DarkGreen, Size, Size);
                 Color = Microsoft.Xna.Framework.Color.DarkGreen;
             }
             if (type == TileType.Empty)
             {
-                Texture = GenerateTexture(g, Microsoft.Xna.Framework.Color.CornflowerBlue);
+                Texture = TextureUtil.GenerateTexture(Microsoft.Xna.Framework.Color.CornflowerBlue, Size, Size);
             }
             Type = type;
         }
 
-        private Texture2D GenerateTexture(GraphicsDevice g, Microsoft.Xna.Framework.Color color)
-        {    
-            Microsoft.Xna.Framework.Color[] data = new Microsoft.Xna.Framework.Color[Size * Size];
-            Texture2D texture = new Texture2D(g, Size, Size);
-            //Debug.WriteLine(texture.Format.ToString());
-            for (int i = 0; i < data.Length; ++i) data[i] = color;
-            
-            if (Selected)
-            {
-                for (int i = 0; i < data.Length; ++i) data[i] = Microsoft.Xna.Framework.Color.White;
-                texture.SetData(data);
-                return texture;
-            }
-            else
-            {
-                
-            }
-            texture.SetData(data);
-            return texture;
-            //Texture.SetData(data);
-        }
+        
     }
 }

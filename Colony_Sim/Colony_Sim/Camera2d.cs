@@ -21,24 +21,24 @@ public static class Camera2d
         KeyboardState key = Keyboard.GetState();
         //move cam left
         
-        if(Colony_Sim.MouseInputManager.GetMousePosition().X <= 0)
+        if(Colony_Sim.Input.GetMousePosition().X <= 0)
         {
             Position += new Vector3(Speed, 0, 0);
             Transform = Matrix.CreateTranslation(Position);
         }
 
-        if (Colony_Sim.MouseInputManager.GetMousePosition().X >= GraphicsDeviceManager.PreferredBackBufferWidth)
+        if (Colony_Sim.Input.GetMousePosition().X >= GraphicsDeviceManager.PreferredBackBufferWidth)
         {
             Position -= new Vector3(Speed, 0, 0);
             Transform = Matrix.CreateTranslation(Position);
         }
-        if (Colony_Sim.MouseInputManager.GetMousePosition().Y <= 0)
+        if (Colony_Sim.Input.GetMousePosition().Y <= 0)
         {
             Position += new Vector3(0, Speed, 0);
             Transform = Matrix.CreateTranslation(Position);
         }
 
-        if (Colony_Sim.MouseInputManager.GetMousePosition().Y >= GraphicsDeviceManager.PreferredBackBufferHeight)
+        if (Colony_Sim.Input.GetMousePosition().Y >= GraphicsDeviceManager.PreferredBackBufferHeight)
         {
             Position -= new Vector3(0, Speed, 0);
             Transform = Matrix.CreateTranslation(Position);

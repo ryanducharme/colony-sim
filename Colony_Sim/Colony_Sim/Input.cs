@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Colony_Sim
 {
-    static class MouseInputManager
+    static class Input
     {
         private static MouseState CurrentMouseState;
         private static MouseState LastMouseState;

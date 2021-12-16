@@ -29,17 +29,17 @@ namespace Colony_Sim
             _character = character;
             //mouseInputMgr = new MouseInputManager();
         }
-        public string GetTileData()
-        {
-            string tileData;
-            if (_Map.IsWithinMapBounds(ScreenToWorldMapIndex))
-            {
-                tileData = _Map.MapData[(int)ScreenToWorldMapIndex.X, (int)ScreenToWorldMapIndex.Y].Type.ToString();
-                return tileData;
-            }
-            else
-                return "not within bounds";
-        }
+        //public string GetTileData(Map map)
+        //{
+        //    string tileData;
+        //    if (map.IsWithinMapBounds(ScreenToWorldMapIndex))
+        //    {
+        //        tileData = map.MapData[(int)ScreenToWorldMapIndex.X, (int)ScreenToWorldMapIndex.Y].Type.ToString();
+        //        return tileData;
+        //    }
+        //    else
+        //        return "not within bounds";
+        //}
 
 
         
@@ -51,10 +51,10 @@ namespace Colony_Sim
             keyboardState = Keyboard.GetState();
             
             //Get the mouse coordinates and translate them to the offset of the world. Then see if that vector is within the bounds of the map (chopped up by the tile size)
-            ScreenToWorldMapIndex = _Map.GetMapIndex(Camera2d.ScreenToWorldSpace(MouseInputManager.GetMousePosition()));
+            ScreenToWorldMapIndex = _Map.GetMapIndex(Camera2d.ScreenToWorldSpace(Input.GetMousePosition()));
 
             //Debug.WriteLine("Mouse: " + MouseInputManager.Bounds);
-            if (MouseInputManager.Bounds.Intersects(_character.Bounds) && MouseInputManager.MousePressed())
+            if (Input.Bounds.Intersects(_character.Bounds) && Input.MousePressed())
             {
                 //uiContainer.AddContent(new Label())
                 Debug.WriteLine("Over Character");
@@ -66,7 +66,7 @@ namespace Colony_Sim
             {
                 //Debug.WriteLine("Worked");
 
-                if (MouseInputManager.MousePressed())
+                if (Input.MousePressed())
                 {
                     
                     _Map.MapData[(int)ScreenToWorldMapIndex.X, (int)ScreenToWorldMapIndex.Y].Selected = true;

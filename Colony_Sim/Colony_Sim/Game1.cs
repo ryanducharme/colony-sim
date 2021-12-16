@@ -22,6 +22,10 @@ namespace Colony_Sim
         Label label;
         Container container;
 
+
+        List<IUpdateable> updateables;
+        List<IDrawable> drawables;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -35,7 +39,10 @@ namespace Colony_Sim
             _graphics.PreferredBackBufferHeight = 720;   // set this value to the desired height of your window
             _graphics.ApplyChanges();
             Camera2d.GraphicsDeviceManager = _graphics;
-            
+            TextureUtil.graphicsDevice = _graphics.GraphicsDevice;
+
+
+
             base.Initialize();
         }
 
@@ -49,11 +56,22 @@ namespace Colony_Sim
             character.Texture = man;
 
             font = Content.Load<SpriteFont>("Fonts\\DefaultFont");
-            map = new Map(GraphicsDevice);
+            map = new Map();
             label = new Label(font, new Vector2(100, 100), "Hello world!", Color.White);
             container = new Container(new Vector2(20, 20), buttonTexture);
             container.AddContent(label);
-            
+
+
+
+            updateables = new List<IUpdateable>();
+            updateables.Add(map);
+            updateables.Add(character);
+
+
+            drawables = new List<IDrawable>();
+            drawables.Add(map);
+            drawables.Add(character);
+
 
             //fix this to not need to add in level and container
             inputManager = new InputManager(map, container, character);
@@ -66,11 +84,17 @@ namespace Colony_Sim
         protected override void Update(GameTime gameTime)
         {
 
-            MouseInputManager.Update();
-            inputManager.Update(_gameWorldSpriteBatch);
+
+
+            Input.Update();
             Camera2d.Update();
+            //inputManager.Update(_gameWorldSpriteBatch);
             //Debug.WriteLine(character.Bounds);
-            character.Update();
+
+            foreach(IUpdateable updateable in updateables)
+            {
+                updateable.Update(gameTime);
+            }
             base.Update(gameTime);
         }
 
@@ -79,15 +103,25 @@ namespace Colony_Sim
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _gameWorldSpriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Camera2d.Transform);
-            map.Draw(_gameWorldSpriteBatch);
-            _gameWorldSpriteBatch.Draw(character.Texture, character.Position, Color.White);
+
+            foreach (IDrawable drawable in drawables)
+            {
+                drawable.Draw(_gameWorldSpriteBatch);
+            }
+
+
+
+
+            //map.Draw(_gameWorldSpriteBatch);
+            //_gameWorldSpriteBatch.Draw(character.Texture, character.Position, Color.White);
             _gameWorldSpriteBatch.End();
 
 
             _UISpriteBatch.Begin();
             var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
             _UISpriteBatch.DrawString(font, "FPS: " + framerate, new Vector2(0, 0), Color.Black);
-            label.Text = "Tile Data: " + inputManager.GetTileData() + "\n" + inputManager.ScreenToWorldMapIndex.ToString();
+            label.Text = "Tile Data: " + MapUtil.GetTileData(map, Camera2d.ScreenToWorldSpace(Input.GetMousePosition()))
+                + "\n" + inputManager.ScreenToWorldMapIndex.ToString();
             label.Position = new Vector2(0,20);
             _UISpriteBatch.End();
 
