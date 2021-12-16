@@ -14,7 +14,7 @@ namespace Colony_Sim
         private static MouseState CurrentMouseState;
         private static MouseState LastMouseState;
         private static Vector2 MousePosition;
-
+        public static Rectangle Bounds;
         public static void Update()
         {
             GetCurrentMouseState();
@@ -28,6 +28,8 @@ namespace Colony_Sim
         {
             MousePosition.X = CurrentMouseState.X;
             MousePosition.Y = CurrentMouseState.Y;
+            Bounds = new Rectangle((int)Camera2d.ScreenToWorldSpace(MousePosition).X, (int)Camera2d.ScreenToWorldSpace(MousePosition).Y, 1, 1);
+            //Bounds = new Rectangle((int)MousePosition.X, (int)MousePosition.Y, 1, 1);
             return MousePosition;
         }
 

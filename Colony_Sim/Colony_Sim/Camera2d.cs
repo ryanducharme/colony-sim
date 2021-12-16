@@ -6,7 +6,7 @@ using System.Diagnostics;
 public static class Camera2d
 {
     public static Matrix Transform { get; set; } = Matrix.Identity; // Matrix Transform
-    public static Vector3 Position { get; set; } // Camera Position
+    public static Vector3 Position { get; set; }// Camera Position
     public static int Speed { get; set; } = 5;
     public static GraphicsDeviceManager GraphicsDeviceManager { get; set; }
     

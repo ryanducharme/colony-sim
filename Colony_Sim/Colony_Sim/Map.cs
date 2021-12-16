@@ -6,18 +6,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Colony_Sim
 {
-    public class Level
+    public class Map
     {
         GraphicsDevice graphics;
-        public Tile[,] LevelData { get; }
-        public int LevelSize { get; set; } = 10;
-        public Level(GraphicsDevice g)
+        public Tile[,] MapData { get; }
+        public int MapSize { get; set; } = 10;
+        public Map(GraphicsDevice g)
         {
             graphics = g;
-            LevelData = new Tile[LevelSize, LevelSize];
+            MapData = new Tile[MapSize, MapSize];
         }
 
-        public Vector2 GetLevelIndex(Vector2 Point)
+        public Vector2 GetMapIndex(Vector2 Point)
         {
 
             float xIndex = Point.X / 32;
@@ -25,9 +25,9 @@ namespace Colony_Sim
             return new Vector2(xIndex, yIndex);
         }
 
-        public bool IsWithinLevelBounds(Vector2 testPosition)
+        public bool IsWithinMapBounds(Vector2 testPosition)
         {
-            if (testPosition.X >= 0 && testPosition.X < LevelData.GetLength(0) && testPosition.Y >= 0 && testPosition.Y < LevelData.GetLength(1))
+            if (testPosition.X >= 0 && testPosition.X < MapData.GetLength(0) && testPosition.Y >= 0 && testPosition.Y < MapData.GetLength(1))
             {   
                 return true;
             }
@@ -37,7 +37,7 @@ namespace Colony_Sim
             }
         }
 
-        public void GenerateLevel()
+        public void GenerateMap()
         {
             Random random = new Random();
 
@@ -46,9 +46,9 @@ namespace Colony_Sim
             int currentWaterTileCount = 0;
             
             
-            for (int row = 0; row < LevelSize; row++)
+            for (int row = 0; row < MapSize; row++)
             {
-                for (int col = 0; col < LevelSize; col++)
+                for (int col = 0; col < MapSize; col++)
                 {
                     int randomNumber = random.Next(0, 3);
                     
@@ -60,7 +60,7 @@ namespace Colony_Sim
                     if (tileType == TileType.Water && currentWaterTileCount < maxWater)
                     {
                         currentWaterTileCount++;
-                        LevelData[row, col] = new Tile(graphics, tileType);
+                        MapData[row, col] = new Tile(graphics, tileType);
                     }
                     else
                     {
@@ -69,7 +69,7 @@ namespace Colony_Sim
                             randomNumber = random.Next(0, 3);
                         }
                         tileType = (TileType)Enum.ToObject(typeof(TileType), randomNumber);
-                        LevelData[row, col] = new Tile(graphics, tileType);
+                        MapData[row, col] = new Tile(graphics, tileType);
                     }
                 }
             }
@@ -84,17 +84,17 @@ namespace Colony_Sim
             int col = 0;
 
             //spriteBatch.Begin();
-            for (row = 0; row < LevelSize; row++)
+            for (row = 0; row < MapSize; row++)
             {
-                for (col = 0; col < LevelSize; col++)
+                for (col = 0; col < MapSize; col++)
                 {
                     
-                    spriteBatch.Draw(LevelData[row, col].Texture, new Vector2(y,x), Color.White);
-                    x += LevelData[row, col].Size;
+                    spriteBatch.Draw(MapData[row, col].Texture, new Vector2(y,x), Color.White);
+                    x += MapData[row, col].Size;
                 }
                 col = 0;
                 x = 0;
-                y += LevelData[row, col].Size;
+                y += MapData[row, col].Size;
             }
             //spriteBatch.End();
         }

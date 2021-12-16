@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Colony_Sim
 {
-    class KeyboardInputManager
+    class WorldManager
     {
+        //talk to level 
     }
 }
