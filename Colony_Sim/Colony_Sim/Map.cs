@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -9,7 +10,7 @@ namespace Colony_Sim
     public class Map : IDrawable, IUpdateable
     {
         public Tile[,] MapData { get; }
-        public int MapSize { get; set; } = 10;
+        public int MapSize { get; set; } = 100;
         public Map()
         {
             MapData = new Tile[MapSize, MapSize];
@@ -17,8 +18,8 @@ namespace Colony_Sim
 
         public Vector2 GetMapIndex(Vector2 Point)
         {
-            float xIndex = Point.X / 32;
-            float yIndex = Point.Y / 32;
+            float xIndex = Point.X / 64;
+            float yIndex = Point.Y / 64;
             return new Vector2(xIndex, yIndex);
         }
 
@@ -93,7 +94,13 @@ namespace Colony_Sim
                 x = 0;
                 y += MapData[row, col].Size;
             }
+
+            //var selectedTiles = Tiles.Where(tile => tile.Selected).ToArray();
+
             //spriteBatch.End();
         }
+
+        // see Gramps for implementation
+        public IEnumerable<Tile> Tiles { get => null; }
     }
 }

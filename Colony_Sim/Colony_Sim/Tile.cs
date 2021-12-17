@@ -10,7 +10,7 @@ namespace Colony_Sim
         public Texture2D Texture { get; set; }
         public bool Selected { get; set; }
         public string Description { get; set; }
-        public int Size { get; set; } = 32;
+        public int Size { get; set; } = 64;
         public TileType Type { get; set; }
         public Microsoft.Xna.Framework.Color Color { get; set; }
         //Rectangle Bounds { get; set; }
@@ -18,7 +18,7 @@ namespace Colony_Sim
         {
             if(type == TileType.Grass)
             {
-                Texture = TextureUtil.GenerateTexture(Microsoft.Xna.Framework.Color.Green, Size, Size);
+                Texture = TextureUtil.DefaultGreen;
                 Color = Microsoft.Xna.Framework.Color.Green;
             }
             if (type == TileType.Water)
@@ -27,7 +27,7 @@ namespace Colony_Sim
             }
             if (type == TileType.Soil)
             {
-                Texture = TextureUtil.GenerateTexture(Microsoft.Xna.Framework.Color.DarkGreen, Size, Size);
+                Texture = TextureUtil.DefaultDarkGreen;
                 Color = Microsoft.Xna.Framework.Color.DarkGreen;
             }
             if (type == TileType.Empty)

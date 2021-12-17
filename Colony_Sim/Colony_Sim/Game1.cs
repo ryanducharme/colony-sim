@@ -40,7 +40,8 @@ namespace Colony_Sim
             _graphics.ApplyChanges();
             Camera2d.GraphicsDeviceManager = _graphics;
             TextureUtil.graphicsDevice = _graphics.GraphicsDevice;
-
+            TextureUtil.DefaultGreen = TextureUtil.GenerateTexture(Color.Green, 64,64);
+            TextureUtil.DefaultDarkGreen = TextureUtil.GenerateTexture(Color.DarkGreen, 64, 64);
 
 
             base.Initialize();
@@ -66,6 +67,7 @@ namespace Colony_Sim
             updateables = new List<IUpdateable>();
             updateables.Add(map);
             updateables.Add(character);
+            
 
 
             drawables = new List<IDrawable>();
@@ -74,7 +76,7 @@ namespace Colony_Sim
 
 
             //fix this to not need to add in level and container
-            inputManager = new InputManager(map, container, character);
+            //inputManager = new InputManager(map, container, character);
             
             //container.AddContent(button);
             map.GenerateMap();
@@ -120,8 +122,9 @@ namespace Colony_Sim
             _UISpriteBatch.Begin();
             var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
             _UISpriteBatch.DrawString(font, "FPS: " + framerate, new Vector2(0, 0), Color.Black);
-            label.Text = "Tile Data: " + MapUtil.GetTileData(map, Camera2d.ScreenToWorldSpace(Input.GetMousePosition()))
-                + "\n" + inputManager.ScreenToWorldMapIndex.ToString();
+            Vector2 screenToWorldMapIndex = Camera2d.ScreenToWorldSpace(Input.GetMousePosition());
+            string tileData = MapUtil.GetTileData(map, screenToWorldMapIndex);
+            label.Text = $"Tile Data: {tileData}\n{screenToWorldMapIndex}";
             label.Position = new Vector2(0,20);
             _UISpriteBatch.End();
 
