@@ -11,16 +11,18 @@ namespace Colony_Sim
 {
     class Character : IUpdateable, IDrawable
     {
-        public int Health { get; set; }
-        public int Strength { get; set; }
-        public int Attack { get; set; }
-        public int Defence { get; set; }
+        public string Name { get; set; } = "Fred";
+        public int Health { get; set; } = 100;
+        public int Strength { get; set; } = 1;
+        public int Attack { get; set; } = 1;
+        public int Defence { get; set; } = 1;
         public float Experience { get; set; }
         public int MoveSpeed { get; set; } = 2;
         public Vector2 Position { get; set; } = new Vector2(0, 0);
         public Vector2 Direction { get; set; }
         public Texture2D Texture { get; set; }
         public Rectangle Bounds;
+        public bool Selected { get; set; }
 
 
         public Character(Texture2D texture)
@@ -62,37 +64,48 @@ namespace Colony_Sim
             if (targetPosition.X > Position.X)
             {
                 posX += MoveSpeed;
-                Debug.WriteLine(x);
+                
             }
             else if( targetPosition.X < Position.X)
             {
                 posX -= MoveSpeed;
-                Debug.WriteLine(x);
+                
             }
             if (targetPosition.Y > Position.Y)
             {
                 posY += MoveSpeed;
-                Debug.WriteLine(x);
+                
             }
             else if (targetPosition.Y < Position.Y)
             {
                 posY -= MoveSpeed;
-                Debug.WriteLine(x);
+                
             }
 
+            if(Input.MouseBounds.Intersects(Bounds) && Input.MouseLeftPressed())
+            {
+                Selected = true;
+                //Debug.WriteLine(Selected);
+            }
 
-            if (Input.MousePressed())
+            if (!Input.MouseBounds.Intersects(Bounds) && Input.MouseLeftPressed())
+            {
+                Selected = false;
+                //Debug.WriteLine(Selected);
+            }
+
+            if (Input.MouseRightPressed() && Selected == true)
             {
                 x = Camera2d.ScreenToWorldSpace(Input.GetMousePosition()).X;
                 y = Camera2d.ScreenToWorldSpace(Input.GetMousePosition()).Y;
-                targetPosition = new Vector2(x,y);
+                targetPosition = new Vector2(x - (Texture.Width / 2), y - (Texture.Height / 2));
             }
             
             //int x = (int)Position.X;
             //int y = (int)Position.Y;
             
             Position = new Vector2(posX, posY);
-            Bounds.Location = new Vector2(x, y).ToPoint();
+            Bounds.Location = new Vector2(posX, posY).ToPoint();
             //Bounds.Location = Camera2d.ScreenToWorldSpace(Bounds.Location.ToVector2());
         }
     }

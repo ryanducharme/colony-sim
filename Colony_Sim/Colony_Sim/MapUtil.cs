@@ -10,17 +10,17 @@ namespace Colony_Sim
     static class MapUtil
     {
 
-        static public string GetTileData(Map map, Vector2 screenToWorldMapIndex)
+        static public Tile GetTileData(Map map, Vector2 screenToWorldMapIndex)
         {
             screenToWorldMapIndex = map.GetMapIndex(screenToWorldMapIndex);
-            string tileData;
+            Tile tileData;
             if (map.IsWithinMapBounds(screenToWorldMapIndex))
             {
-                tileData = map.MapData[(int)screenToWorldMapIndex.X, (int)screenToWorldMapIndex.Y].Type.ToString();
+                tileData = map.MapData[(int)screenToWorldMapIndex.X, (int)screenToWorldMapIndex.Y];
                 return tileData;
             }
             else
-                return "not within bounds";
+                return null;
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Colony_Sim
             ScreenToWorldMapIndex = _Map.GetMapIndex(Camera2d.ScreenToWorldSpace(Input.GetMousePosition()));
 
             //Debug.WriteLine("Mouse: " + MouseInputManager.Bounds);
-            if (Input.Bounds.Intersects(_character.Bounds) && Input.MousePressed())
+            if (Input.MouseBounds.Intersects(_character.Bounds) && Input.MouseLeftPressed())
             {
                 //uiContainer.AddContent(new Label())
                 Debug.WriteLine("Over Character");
@@ -66,7 +66,7 @@ namespace Colony_Sim
             {
                 //Debug.WriteLine("Worked");
 
-                if (Input.MousePressed())
+                if (Input.MouseLeftPressed())
                 {
                     
                     _Map.MapData[(int)ScreenToWorldMapIndex.X, (int)ScreenToWorldMapIndex.Y].Selected = true;

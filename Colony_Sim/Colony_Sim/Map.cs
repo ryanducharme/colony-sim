@@ -71,7 +71,15 @@ namespace Colony_Sim
 
         public void Update(GameTime gameTime)
         {
-            
+            Vector2 mousePos = Camera2d.ScreenToWorldSpace(Input.GetMousePosition());
+            if (Input.MouseLeftPressed() && IsWithinMapBounds(GetMapIndex(mousePos)))
+            {
+                Tile tempTile = MapUtil.GetTileData(this, mousePos);
+                tempTile.Selected = true;
+                Debug.WriteLine(tempTile.Type.ToString());
+
+
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -19,8 +19,12 @@ namespace Colony_Sim
         SpriteFont font;
         Texture2D man;
         InputManager inputManager;
+        
+        
         Label label;
         Container container;
+        Container inventoryUI;
+        Label characterName;
 
 
         List<IUpdateable> updateables;
@@ -50,19 +54,26 @@ namespace Colony_Sim
         protected override void LoadContent()
         {
             _gameWorldSpriteBatch = new SpriteBatch(GraphicsDevice);
-            _UISpriteBatch = new SpriteBatch(GraphicsDevice);
-            Texture2D buttonTexture = Content.Load<Texture2D>("Textures\\pink_brick");
+            
+            //Texture2D buttonTexture = Content.Load<Texture2D>("Textures\\pink_brick");
             man = Content.Load<Texture2D>("Textures\\Man");
             character = new Character(man);
             character.Texture = man;
 
             font = Content.Load<SpriteFont>("Fonts\\DefaultFont");
             map = new Map();
-            label = new Label(font, new Vector2(100, 100), "Hello world!", Color.White);
-            container = new Container(new Vector2(20, 20), buttonTexture);
+
+            _UISpriteBatch = new SpriteBatch(GraphicsDevice);
+            label = new Label(font, new Vector2(0, 0), "", Color.White);
+            container = new Container(new Vector2(_graphics.PreferredBackBufferWidth - 200, 0), TextureUtil.GenerateTexture(Color.Transparent, 10,10));
             container.AddContent(label);
 
 
+            inventoryUI = new Container(new Vector2(_graphics.PreferredBackBufferWidth - 200, 0), TextureUtil.GenerateTexture(Color.Black * 0.5f, 200, 500));
+            characterName = new Label(font, inventoryUI.Position, 
+                $"Name: {character.Name}\n-------Stats-------\nHealth: {character.Health}" +
+                $"\nStrength: {character.Strength}\nAttack: {character.Attack}\nDefence: {character.Defence}", Color.White);
+            inventoryUI.AddContent(characterName);
 
             updateables = new List<IUpdateable>();
             updateables.Add(map);
@@ -78,7 +89,7 @@ namespace Colony_Sim
             //fix this to not need to add in level and container
             //inputManager = new InputManager(map, container, character);
             
-            //container.AddContent(button);
+            
             map.GenerateMap();
             
         }
@@ -86,7 +97,7 @@ namespace Colony_Sim
         protected override void Update(GameTime gameTime)
         {
 
-
+            //characterName.Text = character.Name;
 
             Input.Update();
             Camera2d.Update();
@@ -110,24 +121,33 @@ namespace Colony_Sim
             {
                 drawable.Draw(_gameWorldSpriteBatch);
             }
-
-
-
-
             //map.Draw(_gameWorldSpriteBatch);
             //_gameWorldSpriteBatch.Draw(character.Texture, character.Position, Color.White);
             _gameWorldSpriteBatch.End();
 
 
+
+
             _UISpriteBatch.Begin();
             var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
+
             _UISpriteBatch.DrawString(font, "FPS: " + framerate, new Vector2(0, 0), Color.Black);
-            Vector2 screenToWorldMapIndex = Camera2d.ScreenToWorldSpace(Input.GetMousePosition());
-            string tileData = MapUtil.GetTileData(map, screenToWorldMapIndex);
-            label.Text = $"Tile Data: {tileData}\n{screenToWorldMapIndex}";
-            label.Position = new Vector2(0,20);
+            //Vector2 screenToWorldMapIndex = Camera2d.ScreenToWorldSpace(Input.GetMousePosition());
+            //string tileData = MapUtil.GetTileData(map, screenToWorldMapIndex).Type.ToString();
+            //label.Text = $"Tile Data: {tileData}\n{screenToWorldMapIndex}";
+            //label.Position = new Vector2(0,20);
+
+            if (character.Selected)
+            {
+                _UISpriteBatch.Draw(inventoryUI.Texture, inventoryUI.Position, Color.Black);
+                _UISpriteBatch.DrawString(font, characterName.Text, inventoryUI.Position, Color.White);
+            }
+            
+            
             _UISpriteBatch.End();
 
+
+            //debug menu sort of
             container.Draw(_gameWorldSpriteBatch);
 
             base.Draw(gameTime);

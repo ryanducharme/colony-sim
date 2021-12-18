@@ -11,9 +11,9 @@ namespace Colony_Sim
     class Container : UserInterfaceElement
     {
         //Container to hold 1 or more ui elements
-        Vector2 Position { get; set; }
+        public Vector2 Position { get; set; }
         public bool Visible { get; set; } = true;
-        Texture2D Texture;
+        public Texture2D Texture { get; set; }
         public List<UserInterfaceElement> ContainerContents { get; set; }
         
 
@@ -30,11 +30,14 @@ namespace Colony_Sim
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if(Visible)
+            spriteBatch.Begin();
+            
+            if (Visible)
             {
+                spriteBatch.Draw(Texture, Position, Color.White);
                 foreach (UserInterfaceElement uiElement in ContainerContents)
                 {
-                    spriteBatch.Begin();
+                    
                     uiElement.Draw(spriteBatch);
                     spriteBatch.End();
                 }
