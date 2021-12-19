@@ -10,26 +10,34 @@ namespace Colony_Sim.Scenes
     {
         GraphicsDevice graphics;
         List<Scene> Scenes = new List<Scene>();
+        MainMenu mainMenu;
         GameplayScene gameScene;
 
         
         public SceneManager(GraphicsDevice g, Game game)
         {
             graphics = g;
+            mainMenu = new MainMenu();
             gameScene = new GameplayScene(graphics, game);
+            Scenes.Add(mainMenu);
             Scenes.Add(gameScene);
         }
         public void Update(GameTime gameTime)
         {
-            gameScene.Update(gameTime);
-            //if (Input.MouseLeftPressed())
-            //{
-            //    gameScene.Active = false;
-            //}
-            //else
-            //{
-            //    gameScene.Active = true;
-            //}
+            foreach (Scene scene in Scenes)
+            {
+                if (Input.MouseLeftPressed())
+                {
+                    mainMenu.Active = false;
+                    gameScene.Active = true;
+                }
+                if (scene.Active)
+                {
+                    scene.Update(gameTime);
+                }
+            }
+            //gameScene.Update(gameTime);
+            
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

@@ -22,7 +22,7 @@ namespace Colony_Sim
 
         protected override void Initialize()
         {
-            _graphics.PreferredBackBufferWidth = 1280;  // set this value to the desired width of your window
+            _graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
             _graphics.PreferredBackBufferHeight = 1280;   // set this value to the desired height of your window
             _graphics.ApplyChanges();
             
@@ -59,8 +59,6 @@ namespace Colony_Sim
             //    _UISpriteBatch.DrawString(font, characterName.Text, inventoryUI.Position, Color.White);
             //}
             base.Draw(gameTime);
-            
-            
         }
     }
 }

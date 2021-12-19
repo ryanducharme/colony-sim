@@ -21,18 +21,14 @@ namespace Colony_Sim
         public Vector2 Position { get; set; } = new Vector2(0, 0);
         public Vector2 Direction { get; set; }
         public Texture2D Texture { get; set; }
-        public Rectangle Bounds;
         public bool Selected { get; set; }
-
+        public Rectangle Bounds;
 
         public Character(Texture2D texture)
         {
             Texture = texture;
-            
             Bounds = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
         }
-
-     
 
         public void Draw(GameTime gameTime, SpriteBatch spritebatch)
         {
@@ -45,7 +41,7 @@ namespace Colony_Sim
         //    //Position = targetPosition;
         //    if (targetPosition.X < Position.X)
         //        x += MoveSpeed;
-            
+
         //}
 
         Vector2 targetPosition;
@@ -55,30 +51,28 @@ namespace Colony_Sim
         float posY;
         public void Update(GameTime time)
         {
-
-
             if (targetPosition.X > Position.X)
             {
                 posX += MoveSpeed;
-                
+
             }
-            else if( targetPosition.X < Position.X)
+            else if (targetPosition.X < Position.X)
             {
                 posX -= MoveSpeed;
-                
+
             }
             if (targetPosition.Y > Position.Y)
             {
                 posY += MoveSpeed;
-                
+
             }
             else if (targetPosition.Y < Position.Y)
             {
                 posY -= MoveSpeed;
-                
+
             }
 
-            if(Input.MouseBounds.Intersects(Bounds) && Input.MouseLeftPressed())
+            if (Input.MouseBounds.Intersects(Bounds) && Input.MouseLeftPressed())
             {
                 Selected = true;
                 //Debug.WriteLine(Selected);
@@ -96,10 +90,10 @@ namespace Colony_Sim
                 y = Camera2d.ScreenToWorldSpace(Input.GetMousePosition()).Y;
                 targetPosition = new Vector2(x - (Texture.Width / 2), y - (Texture.Height / 2));
             }
-            
+
             //int x = (int)Position.X;
             //int y = (int)Position.Y;
-            
+
             Position = new Vector2(posX, posY);
             Bounds.Location = new Vector2(posX, posY).ToPoint();
             //Bounds.Location = Camera2d.ScreenToWorldSpace(Bounds.Location.ToVector2());
