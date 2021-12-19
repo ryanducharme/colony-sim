@@ -20,7 +20,7 @@ namespace Colony_Sim
                 return tileData;
             }
             else
-                return null;
+                return new Tile(TileType.Empty);
         }
     }
 }

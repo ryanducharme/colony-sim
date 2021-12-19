@@ -5,10 +5,14 @@
   <Config />
   <SourceFiles>
     <File>G:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/Fonts/DefaultFont.spritefont</File>
+    <File>G:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/Textures/DarkGrass.png</File>
+    <File>G:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/Textures/Grass.png</File>
     <File>G:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/Textures/Man.png</File>
     <File>G:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/Textures/pink_brick.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

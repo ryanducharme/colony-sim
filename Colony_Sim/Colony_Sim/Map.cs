@@ -81,7 +81,7 @@ namespace Colony_Sim
 
             }
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             //Vector position
             int x = 0;
@@ -94,8 +94,9 @@ namespace Colony_Sim
             {
                 for (col = 0; col < MapSize; col++)
                 {
+
+                    spriteBatch.Draw(MapData[row, col].Texture, new Vector2(y, x), Color.White);
                     
-                    spriteBatch.Draw(MapData[row, col].Texture, new Vector2(y,x), Color.White);
                     x += MapData[row, col].Size;
                 }
                 col = 0;

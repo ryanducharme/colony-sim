@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Colony_Sim
 {
     interface IDrawable
     {
-        void Draw(SpriteBatch spriteBatch);
+        void Draw(GameTime gameTime,SpriteBatch spriteBatch);
     }
 }

@@ -34,14 +34,10 @@ namespace Colony_Sim
 
      
 
-        public void Draw(SpriteBatch spritebatch)
+        public void Draw(GameTime gameTime, SpriteBatch spritebatch)
         {
             spritebatch.Draw(Texture, Position, Color.White);
         }
-
-
-
-
 
 
         //public void Move(Vector2 targetPosition)

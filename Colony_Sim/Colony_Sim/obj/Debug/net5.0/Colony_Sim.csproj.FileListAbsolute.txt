@@ -55,3 +55,5 @@ G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\ref\Colony_Sim.d
 G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.pdb
 G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.genruntimeconfig.cache
 G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Content\Textures\Man.xnb
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Content\Textures\Grass.xnb
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\bin\Debug\net5.0\Content\Textures\DarkGrass.xnb
