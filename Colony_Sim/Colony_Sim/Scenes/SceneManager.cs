@@ -36,8 +36,6 @@ namespace Colony_Sim.Scenes
                     scene.Update(gameTime);
                 }
             }
-            //gameScene.Update(gameTime);
-            
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

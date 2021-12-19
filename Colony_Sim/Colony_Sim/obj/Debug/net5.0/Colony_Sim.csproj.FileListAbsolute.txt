@@ -56,3 +56,4 @@ G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.dll
 G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\ref\Colony_Sim.dll
 G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.pdb
 G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.genruntimeconfig.cache
+G:\colony-sim\colony-sim\Colony_Sim\Colony_Sim\obj\Debug\net5.0\Colony_Sim.csprojAssemblyReference.cache
