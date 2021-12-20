@@ -17,7 +17,7 @@ namespace Colony_Sim.Scenes
         public SceneManager(GraphicsDevice g, Game game)
         {
             graphics = g;
-            mainMenu = new MainMenu();
+            mainMenu = new MainMenu(graphics, game);
             gameScene = new GameplayScene(graphics, game);
             Scenes.Add(mainMenu);
             Scenes.Add(gameScene);
