@@ -16,7 +16,7 @@ namespace Colony_Sim
             Tile tileData;
             if (map.IsWithinMapBounds(screenToWorldMapIndex))
             {
-                tileData = map.MapData[(int)screenToWorldMapIndex.X, (int)screenToWorldMapIndex.Y];
+                tileData = map.TerrainLayer[(int)screenToWorldMapIndex.X, (int)screenToWorldMapIndex.Y];
                 return tileData;
             }
             else

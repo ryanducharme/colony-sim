@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Colony_Sim
 {
-    class Container : UserInterfaceElement
+    class Container : UserInterfaceElement, IDrawable, IUpdateable
     {
         //Container to hold 1 or more ui elements
         public Vector2 Position { get; set; }
@@ -28,22 +28,22 @@ namespace Colony_Sim
         {
             ContainerContents.Add(uiElement);
         }
-        public override void Draw(SpriteBatch spriteBatch)
+
+        public override void Update(GameTime gameTime)
         {
-            spriteBatch.Begin();
-            
+
+        }
+
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        { 
             if (Visible)
             {
                 spriteBatch.Draw(Texture, Position, Color.White);
                 foreach (UserInterfaceElement uiElement in ContainerContents)
                 {
-                    
-                    uiElement.Draw(spriteBatch);
-                    spriteBatch.End();
+                    uiElement.Draw(gameTime, spriteBatch);   
                 }
             }
-            
-            
         }
     }
 }

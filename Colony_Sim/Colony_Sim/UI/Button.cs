@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Colony_Sim
 {
-    class Button : UserInterfaceElement
+    class Button : UserInterfaceElement, IDrawable, IUpdateable
     {
         //public Vector2 Position { get; set; }
         public Texture2D Texture { get; set; }
@@ -31,11 +31,17 @@ namespace Colony_Sim
         {
 
         }
-        public override void Draw(SpriteBatch spriteBatch)
+
+        public override void Update(GameTime gameTime)
+        {
+
+        }
+
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             if (Visible)
             {
-                spriteBatch.Draw(Texture, Position, Color.Red);
+                spriteBatch.Draw(Texture, Position, Color.White);
             }
             
         }

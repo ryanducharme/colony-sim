@@ -53,11 +53,7 @@ namespace Colony_Sim
             GraphicsDevice.Clear(Color.CornflowerBlue);
             sceneManager.Draw(gameTime, _gameWorldSpriteBatch);
 
-            //if (character.Selected)
-            //{
-            //    _UISpriteBatch.Draw(inventoryUI.Texture, inventoryUI.Position, Color.Black);
-            //    _UISpriteBatch.DrawString(font, characterName.Text, inventoryUI.Position, Color.White);
-            //}
+            
             base.Draw(gameTime);
         }
     }

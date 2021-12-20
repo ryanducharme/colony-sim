@@ -9,12 +9,30 @@ namespace Colony_Sim
 {
     public class Map : IDrawable, IUpdateable
     {
-        public Tile[,] MapData { get; }
+        public Tile[,] TerrainLayer { get; }
+        //Character[,] CharacterLayer { get; }
+        
         public int MapSize { get; set; } = 100;
+
+        List<Character> CharacterLayer;
+        Character MainCharacter;
+        Character SecondCharacter;
+
+
+
         public Map()
         {
-            MapData = new Tile[MapSize, MapSize];
+            TerrainLayer = new Tile[MapSize, MapSize];
+            CharacterLayer = new List<Character>();
+            MainCharacter = new Character(TextureUtil.GenerateTexture(Color.Red, 32, 32), new Vector2(0,0));
+            CharacterLayer.Add(MainCharacter);
+            SecondCharacter = new Character(TextureUtil.GenerateTexture(Color.Blue, 32, 32), new Vector2(300, 300));
+            SecondCharacter.Name = "Albert";
+            CharacterLayer.Add(SecondCharacter);
         }
+
+
+        
 
         public Vector2 GetMapIndex(Vector2 Point)
         {
@@ -22,15 +40,13 @@ namespace Colony_Sim
             float yIndex = Point.Y / 64;
             return new Vector2(xIndex, yIndex);
         }
-
         public bool IsWithinMapBounds(Vector2 testPosition)
         {
-            if (testPosition.X >= 0 && testPosition.X < MapData.GetLength(0) && testPosition.Y >= 0 && testPosition.Y < MapData.GetLength(1))
+            if (testPosition.X >= 0 && testPosition.X < TerrainLayer.GetLength(0) && testPosition.Y >= 0 && testPosition.Y < TerrainLayer.GetLength(1))
                 return true;
             else
                 return false;
         }
-
         public void GenerateMap()
         {
             Random random = new Random();
@@ -54,7 +70,7 @@ namespace Colony_Sim
                     if (tileType == TileType.Water && currentWaterTileCount < maxWater)
                     {
                         currentWaterTileCount++;
-                        MapData[row, col] = new Tile(tileType);
+                        TerrainLayer[row, col] = new Tile(tileType);
                     }
                     else
                     {
@@ -63,12 +79,11 @@ namespace Colony_Sim
                             randomNumber = random.Next(0, 3);
                         }
                         tileType = (TileType)Enum.ToObject(typeof(TileType), randomNumber);
-                        MapData[row, col] = new Tile(tileType);
+                        TerrainLayer[row, col] = new Tile(tileType);
                     }
                 }
             }
         }
-
         public void Update(GameTime gameTime)
         {
             Vector2 mousePos = Camera2d.ScreenToWorldSpace(Input.GetMousePosition());
@@ -77,9 +92,14 @@ namespace Colony_Sim
                 Tile tempTile = MapUtil.GetTileData(this, mousePos);
                 tempTile.Selected = true;
                 Debug.WriteLine(tempTile.Type.ToString());
-
-
             }
+
+            foreach (Character character in CharacterLayer)
+            {
+                character.Update(gameTime);
+            }
+
+
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
@@ -95,19 +115,22 @@ namespace Colony_Sim
                 for (col = 0; col < MapSize; col++)
                 {
 
-                    spriteBatch.Draw(MapData[row, col].Texture, new Vector2(y, x), Color.White);
+                    spriteBatch.Draw(TerrainLayer[row, col].Texture, new Vector2(y, x), Color.White);
                     
-                    x += MapData[row, col].Size;
+                    x += TerrainLayer[row, col].Size;
                 }
                 col = 0;
                 x = 0;
-                y += MapData[row, col].Size;
+                y += TerrainLayer[row, col].Size;
             }
 
-            //var selectedTiles = Tiles.Where(tile => tile.Selected).ToArray();
 
-            //spriteBatch.End();
+            foreach(Character character in CharacterLayer)
+            {
+                character.Draw(gameTime, spriteBatch);
+            }
         }
+
 
         // see Gramps for implementation
         public IEnumerable<Tile> Tiles { get => null; }

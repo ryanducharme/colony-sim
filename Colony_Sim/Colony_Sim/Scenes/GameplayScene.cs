@@ -8,20 +8,27 @@ namespace Colony_Sim.Scenes
 {
     class GameplayScene : Scene, IUpdateable, IDrawable
     {
-        public override bool Active { get; set; } = false;
+        public override bool Active { get; set; } = true;
         public GraphicsDevice graphicsDevice { get; set; }
         private SpriteBatch _UISpriteBatch;
         string tileData = "";
         Map map = new Map();
-        Character character1;
+        
         SpriteFont font;
         Label label;
-        Label characterName;
+        
         Container container;
-        Container inventoryUI;
+        
 
         List<IDrawable> drawables;
         List<IUpdateable> updateables;
+
+
+        
+        Container inventoryUI;
+        
+
+
         public GameplayScene(GraphicsDevice g, Game game)
         {
             graphicsDevice = g;
@@ -36,22 +43,31 @@ namespace Colony_Sim.Scenes
             drawables = new List<IDrawable>();
 
             map.GenerateMap();
-
         }
 
         public void LoadContent(Game game)
         {
-            character1 = new Character(game.Content.Load<Texture2D>("Textures\\Man"));
+            
             font = game.Content.Load<SpriteFont>("Fonts\\DefaultFont");
             label = new Label(font, new Vector2(0, 0), "", Color.White);
             container = new Container(new Vector2(graphicsDevice.Viewport.Width - 200, 0), TextureUtil.GenerateTexture(Color.Transparent, 10, 10));
             container.AddContent(label);
 
-            updateables.Add(map);
-            updateables.Add(character1);
+            //inventoryUI = new Container(new Vector2(graphicsDevice.Viewport.Width - 300, 0), TextureUtil.GenerateTexture(Color.Black, 300, 500));
+            //inventoryUI.AddContent(new Label(font, inventoryUI.Position, $"{character1.Name}", Color.White));
+            //inventoryUI.AddContent(
+            //    new Label(font, new Vector2(inventoryUI.Position.X, inventoryUI.Position.Y + 30),
+            //    $"---Stats---\n{character1.Health}\n{character1.Strength}\n{character1.Attack}\n{character1.Defence}", Color.White));
 
+            
+
+
+            updateables.Add(map);
+           // updateables.Add(character1);
+            
             drawables.Add(map);
-            drawables.Add(character1);
+            //drawables.Add(character1);
+            
         }
 
         public override void Update(GameTime gameTime)
@@ -66,7 +82,7 @@ namespace Colony_Sim.Scenes
 
         }
 
-
+        
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(SpriteSortMode.BackToFront, null, null, null, null, null, Camera2d.Transform);
@@ -78,10 +94,14 @@ namespace Colony_Sim.Scenes
 
 
             _UISpriteBatch.Begin();
-
-            //var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
-            //_UISpriteBatch.DrawString(font, "\nFPS: " + framerate, new Vector2(0,0), Color.White);
-            _UISpriteBatch.DrawString(font, $"Tile Data: {tileData}", new Vector2(0, 0), Color.White);
+            //if(character1.Selected)
+            //{
+            //    inventoryUI.Draw(gameTime, _UISpriteBatch);
+            //}
+            
+            var framerate = (1 / gameTime.ElapsedGameTime.TotalSeconds);
+            _UISpriteBatch.DrawString(font, "FPS: " + framerate + $"\nTile Data: {tileData}", new Vector2(0,0), Color.White);
+            //_UISpriteBatch.DrawString(font, , new Vector2(0, 0), Color.White);
             _UISpriteBatch.End();
         }
     }

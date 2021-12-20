@@ -26,11 +26,11 @@ namespace Colony_Sim.Scenes
         {
             foreach (Scene scene in Scenes)
             {
-                if (Input.MouseLeftPressed())
-                {
-                    mainMenu.Active = false;
-                    gameScene.Active = true;
-                }
+                //if (Input.MouseLeftPressed())
+                //{
+                //    mainMenu.Active = false;
+                //    gameScene.Active = true;
+                //}
                 if (scene.Active)
                 {
                     scene.Update(gameTime);

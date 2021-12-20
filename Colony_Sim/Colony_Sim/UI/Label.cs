@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Colony_Sim
 {
-    class Label : UserInterfaceElement
+    class Label : UserInterfaceElement, IDrawable
     {
         public Vector2 Position { get; set; } = new Vector2(0, 0);
         public string Text { get; set; }
@@ -24,7 +24,7 @@ namespace Colony_Sim
             Text = text;
             FontColor = fontColor;
         }
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             if(Visible)
             {
