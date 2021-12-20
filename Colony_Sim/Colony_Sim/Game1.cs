@@ -22,8 +22,8 @@ namespace Colony_Sim
 
         protected override void Initialize()
         {
-            _graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
-            _graphics.PreferredBackBufferHeight = 1280;   // set this value to the desired height of your window
+            _graphics.PreferredBackBufferWidth = 1280;  // set this value to the desired width of your window
+            _graphics.PreferredBackBufferHeight = 720;   // set this value to the desired height of your window
             _graphics.ApplyChanges();
             
             Camera2d.GraphicsDeviceManager = _graphics;
@@ -52,8 +52,6 @@ namespace Colony_Sim
         {            
             GraphicsDevice.Clear(Color.CornflowerBlue);
             sceneManager.Draw(gameTime, _gameWorldSpriteBatch);
-
-            
             base.Draw(gameTime);
         }
     }

@@ -24,12 +24,12 @@ namespace Colony_Sim
         public bool Selected { get; set; }
         public Rectangle Bounds;
         public bool isMoving;
-        Vector2 targetPosition;
-        float velocity = 0f;
-        float x;
-        float y;
+        Vector2 target;
         float posX;
         float posY;
+        Texture2D SelectedTexture;
+        Texture2D DefaultTexture;
+
 
         public Character(Texture2D texture, Vector2 position)
         {
@@ -38,6 +38,8 @@ namespace Colony_Sim
             Bounds = new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height);
             posX = Position.X;
             posY = Position.Y;
+            SelectedTexture = TextureUtil.GenerateTexture(Color.Lime, Texture.Width, Texture.Height);
+            DefaultTexture = texture;
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spritebatch)
@@ -48,14 +50,12 @@ namespace Colony_Sim
 
         public void Move(Vector2 currentPosition, Vector2 destination)
         {
-
-
-            if (Vector2.Distance(currentPosition, destination) < 0.3f)
+            if (Vector2.Distance(currentPosition, destination) < 1.5f)
             {
                 isMoving = false;
                 currentPosition = destination;
             }
-            if (currentPosition != destination)
+            if (currentPosition != destination && isMoving)
             {
                 
                 if (destination.X >= currentPosition.X)
@@ -77,26 +77,20 @@ namespace Colony_Sim
                 Bounds.Location = new Vector2(posX, posY).ToPoint();
                 Position = new Vector2(posX, posY);
             }
-            
-
         }
-        Vector2 target;
+        
 
         public void Update(GameTime time)
         {
-            
-
             if (Input.MouseBounds.Intersects(Bounds) && Input.MouseLeftPressed())
             {
                 Selected = true;
                 Debug.WriteLine(this.Name);
             }
-
             if (!Input.MouseBounds.Intersects(Bounds) && Input.MouseLeftPressed())
             {
                 Selected = false;
             }
-
             if (Input.MouseRightPressed() && Selected == true)
             {
                 isMoving = true;
@@ -109,8 +103,14 @@ namespace Colony_Sim
             {
                 Move(Position, target);
             }
-            
-
+            if(Selected)
+            {
+                Texture = SelectedTexture;
+            }
+            else
+            {
+                Texture = DefaultTexture;
+            }
         }
     }
 }
