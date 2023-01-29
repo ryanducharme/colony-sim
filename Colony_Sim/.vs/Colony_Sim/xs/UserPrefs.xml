@@ -1,15 +1,16 @@
 ﻿<Properties StartupConfiguration="{0BAA1FA8-5153-4571-B71F-DFC11DD8E739}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Colony_Sim/Colony_Sim.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Colony_Sim/Map.cs">
     <Files>
-      <File FileName="Colony_Sim/Game1.cs" Line="21" Column="35" />
-      <File FileName="Colony_Sim/UserInterface.cs" />
-      <File FileName="Colony_Sim/Colony_Sim.csproj" Line="14" Column="31" />
+      <File FileName="Colony_Sim/Game1.cs" Line="21" Column="10" />
+      <File FileName="Colony_Sim/Colony_Sim.csproj" />
+      <File FileName="Colony_Sim/Character.cs" />
+      <File FileName="Colony_Sim/Map.cs" Line="21" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Colony_Sim" expanded="True">
-            <Node name="Colony_Sim" expanded="True" selected="True">
+            <Node name="Colony_Sim" expanded="True">
               <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
@@ -20,6 +21,7 @@
                   </Node>
                 </Node>
               </Node>
+              <Node name="Map.cs" selected="True" />
             </Node>
           </Node>
         </State>

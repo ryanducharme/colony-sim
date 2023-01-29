@@ -174,33 +174,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rducharme\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/ryanducharme/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\colony-sim\\colony-sim\\Colony_Sim\\Colony_Sim\\Colony_Sim.csproj",
+      "projectUniqueName": "/Users/ryanducharme/Documents/Development/C#/colony-sim/Colony_Sim/Colony_Sim/Colony_Sim.csproj",
       "projectName": "Colony_Sim",
-      "projectPath": "G:\\colony-sim\\colony-sim\\Colony_Sim\\Colony_Sim\\Colony_Sim.csproj",
-      "packagesPath": "C:\\Users\\rducharme\\.nuget\\packages\\",
-      "outputPath": "G:\\colony-sim\\colony-sim\\Colony_Sim\\Colony_Sim\\obj\\",
+      "projectPath": "/Users/ryanducharme/Documents/Development/C#/colony-sim/Colony_Sim/Colony_Sim/Colony_Sim.csproj",
+      "packagesPath": "/Users/ryanducharme/.nuget/packages/",
+      "outputPath": "/Users/ryanducharme/Documents/Development/C#/colony-sim/Colony_Sim/Colony_Sim/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\rducharme\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/ryanducharme/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -243,7 +234,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.402/RuntimeIdentifierGraph.json"
       }
     }
   }

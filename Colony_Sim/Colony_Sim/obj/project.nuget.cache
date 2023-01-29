@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Il++2yp4NKHxDOBd1RR13F8NawhZHy6KosvKZmu+WI4S6tZznBTVnT35TTiDBYLc0PdBDngGLyoZJ48/+NxHaA==",
+  "dgSpecHash": "ff30ho96/j9Ib+Xxvsd+RzhdIpv5Bzvbw6rgOMHhOE8pjP8dU26VV3SPZ56XWjwM2O61V4oUtiVK8EjDw4A6xg==",
   "success": true,
-  "projectFilePath": "G:\\colony-sim\\colony-sim\\Colony_Sim\\Colony_Sim\\Colony_Sim.csproj",
+  "projectFilePath": "/Users/ryanducharme/Documents/Development/C#/colony-sim/Colony_Sim/Colony_Sim/Colony_Sim.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\rducharme\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
-    "C:\\Users\\rducharme\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"
+    "/Users/ryanducharme/.nuget/packages/monogame.content.builder.task/3.8.0.1641/monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
+    "/Users/ryanducharme/.nuget/packages/monogame.framework.desktopgl/3.8.0.1641/monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"
   ],
   "logs": []
 }

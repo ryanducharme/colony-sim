@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>G:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/Textures/pink_brick.png</SourceFile>
-  <SourceTime>2021-12-08T20:16:13.2354187-05:00</SourceTime>
-  <DestFile>G:/colony-sim/colony-sim/Colony_Sim/Colony_Sim/Content/bin/DesktopGL/Content/Textures/pink_brick.xnb</DestFile>
-  <DestTime>2021-12-20T17:03:24.8398897-05:00</DestTime>
+  <SourceFile>/Users/ryanducharme/Documents/Development/C#/colony-sim/Colony_Sim/Colony_Sim/Content/Textures/pink_brick.png</SourceFile>
+  <SourceTime>2021-12-13T15:36:34.22907-05:00</SourceTime>
+  <DestFile>/Users/ryanducharme/Documents/Development/C#/colony-sim/Colony_Sim/Colony_Sim/Content/bin/DesktopGL/Content/Textures/pink_brick.xnb</DestFile>
+  <DestTime>2021-12-20T20:48:08.3942169-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
